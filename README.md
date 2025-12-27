@@ -12,7 +12,7 @@ An experimental GameBoy emulator written in C for educational purposes. It emula
 ```bash
 git clone https://github.com/veeso/cboy-lego.git && cd cboy-lego
 mkdir build && cd build
-cmake -DRENDERER=FRAMEBUFFER -DCMAKE_EXE_LINKER_FLAGS="-latomic" ..
+cmake -DRENDERER=FRAMEBUFFER -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXE_LINKER_FLAGS="-latomic" ..
 make
 ```
 

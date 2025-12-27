@@ -12,8 +12,8 @@
 #include <cpu.h>
 #include <display.h>
 
-#define WIDTH 160
-#define HEIGHT 144
+#define WIDTH 320
+#define HEIGHT 240
 
 struct fb_fix_screeninfo finfo;
 struct fb_var_screeninfo vinfo;
