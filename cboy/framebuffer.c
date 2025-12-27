@@ -31,13 +31,20 @@ static void draw_pixel_rgb(uint32_t x, uint32_t y, uint32_t r, uint32_t g, uint3
 static void draw_pixel(unsigned char x, unsigned char y, unsigned short color) {
     for (unsigned char px = 0; px < scale; px++) {
         for (unsigned char py = 0; py < scale; py++) {
-            draw_pixel_rgb(x * scale + px + x_offset, y * scale + py, (color & 0x1f) * 8, ((color >> 5) & 0x1f) * 8, ((color >> 10) & 0x1f) * 8, 0);
+            draw_pixel_rgb(x * scale + px + x_offset, y * scale + py, (color & 0x1f) * 8, ((color >> 5) & 0x1f) * 8,
+                           ((color >> 10) & 0x1f) * 8, 0);
         }
     }
 }
 
 void display_loop() {
-    int fd = open("/dev/fb0", O_RDWR);
+    // read env variable `FRAMEBUFFER` to get framebuffer device path or use default
+    const char *fb_path = getenv("FRAMEBUFFER");
+    if (fb_path == NULL) {
+        fb_path = "/dev/fb0";
+    }
+
+    int fd = open(fb_path, O_RDWR);
     ioctl(fd, FBIOGET_VSCREENINFO, &vinfo);
     ioctl(fd, FBIOGET_FSCREENINFO, &finfo);
 

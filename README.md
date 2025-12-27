@@ -29,7 +29,7 @@ It should use joystick from `/dev/input/js0` if available. Only tested with XBOX
 
 ## Framebuffer output instead OpenGL
 
-Instead of using OpenGL as renderer, there is another display output method that directly writes to the framebuffer `/dev/fb0`. It only works outside X11 and only takes input from joystick. This method was intended to run the emulator on a Raspberry Pi 2, where the OpenGL performance with GLUT is very poor (would need OpenGL ES 2.0).
+Instead of using OpenGL as renderer, there is another display output method that directly writes to the framebuffer `/dev/fb0` or set with env variable `FRAMEBUFFER`. It only works outside X11 and only takes input from joystick. This method was intended to run the emulator on a Raspberry Pi 2, where the OpenGL performance with GLUT is very poor (would need OpenGL ES 2.0).
 
 To enable display output to framebuffer, use cmake with the following option enabled:
 
